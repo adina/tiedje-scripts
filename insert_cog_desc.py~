@@ -1,0 +1,33 @@
+#!/usr/bin/python
+
+import sys
+
+if len(sys.argv) != 4:
+	print "USAGE: insert_cog_desc.py <desc_file> <in_cog> <out_cog>"
+	sys.exit(1)
+
+descriptions = dict()
+
+for line in open(sys.argv[1], 'rU'):
+	data = line.strip().split(' ')
+	cog_id = data[1]
+	cog_abbrev = data[0][1:-1]
+	cog_descr = data[2]
+	descriptions[cog_id] = [cog_abbrev, cog_descr]
+
+out = open(sys.argv[3], "w")
+for n, line in enumerate(open(sys.argv[2], 'rU')):
+	if n > 0:
+		data2 = line.strip().split(',')
+		if descriptions.has_key(data2[0]):
+			continue
+		else:
+			print data2[0]
+		#data2.insert(1, descriptions[data2][0])
+'''
+	if len(lexemes) != 12:
+		continue
+
+	lexemes.insert(2, descriptions[lexemes[1]])
+	out.write("%s\n" % ("\t".join(lexemes)))
+'''

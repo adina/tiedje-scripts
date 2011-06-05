@@ -12,7 +12,7 @@ def read_In_Cogs(cog_file):
             cog_id = line[0]
             set_of_cogs.add(cog_id)
             cog_name = line[1]
-            cog_count = int(line[3])
+            cog_count = int(line[2])
             if cog_dict.has_key(cog_id):
                 cog_dict[cog_id][1] += cog_count
             else:
